@@ -5,11 +5,14 @@ Este documento tiene como objetivo proporcionar pautas para la integración de c
 
 >Este repositorio es un trabajo en progreso. De hecho, su primer "Merge Request" podría ser corregir o agregar nuevas directrices a este documento. Para llevar esto a cabo póngase en contacto con el lider del equipo o con el encargado de "DevOps".
 
+<a name="#inicio"></a>
+### Inicio
+
 | Indice |  |
 |--|--|
 | [General Conventions](#general-conventions) | Convenciones generales |
 | [Meaningful Commit Messages](#commit-messages) | Mensajes de confirmación significativos |
-| [Gitlab Workflow](#workflow) | Flujo de Trabajo en Gitlab |
+| [Gitlab Workflow](#gitlab-workflow) | Flujo de Trabajo en Gitlab |
 
 
 <a name="general-conventions"></a>
@@ -70,8 +73,8 @@ para seguimientos. Ej:
 Resolves: #b214c5\
 Issues: #03
 
-<a name="#workflow"></a>
-## Guía Workflow
+<a name="#gitlab-workflow"></a>
+## Gitlab Workflow
 
 Las siguientes especificaciones son exclusivas de la plataforma Gitlab. Y serán aquellas por las que nos guiaremos.
 
@@ -80,10 +83,10 @@ Las siguientes especificaciones son exclusivas de la plataforma Gitlab. Y serán
 | Que debe hacerse | Detalle | Quien lo hace |
 |--|--|--|
 | [Crear Proyecto](#crear-proyecto) | Aquí se incluye la creación del repositorio y/o<br /> ramas que se necesitarán.<br /> También puede asignar a alguien más. | [Luigui Astohuamán](@luiguimario) |
-| [Crear Incidencias](#crear-issues) (`Issues`) | En este paso (el cuál también puede asignarse<br /> a otro/a persona) es donde se dan las<br /> asignaciones a los desarrolladores. | [Luigui Astohuamán](@luiguimario) |
-| [`Merge Requests`](#merge-request) | Una vez recibidas las asignaciones y, que cada<br /> desarrollador haya descargado su copia del<br />proyecto; debera crear su propio `Merge Request`<br /> para iniciar su trabajo. | - [Luigui Astohuamán](@luiguimario)<br /> - [Erick Quispe](@ertrii)<br /> - [Gerardo A. Muñoz A.](@gmunozasca)<br />- [Giordano](@giordano200699)<br />- [Ktacas](@Ktacas)<br />- [Luis-QT](@Luis-QT)<br />- [Marco Castilla]( @mact35)<br />- [Fatima D. Galindo V.](@fatimagavi)<br />- [Pablo E. Pulido](@pulidovpe)<br /> |
-| [Aprobar un `Merge Request`](#aprobar-merge) | Esta sección es exclusivamente para el<br /> encargado de revisar el código antes de<br /> hacer el merge. | [Luigui Astohuamán](@luiguimario) |
-| [Fusionar los cambios](#hacer-merge) | Una vez recibida la aprobación ya se puede<br /> realizar la fusión por consola o en *Gitlab*. | - [Luigui Astohuamán](@luiguimario)<br /> - [Erick Quispe](@ertrii)<br /> - [Gerardo A. Muñoz A.](@gmunozasca)<br />- [Giordano](@giordano200699)<br />- [Ktacas](@Ktacas)<br />- [Luis-QT](@Luis-QT)<br />- [Marco Castilla]( @mact35)<br />- [Fatima D. Galindo V.](@fatimagavi)<br />- [Pablo E. Pulido](@pulidovpe)<br /> |
+| [Crear Incidencias](#crear-incidencias) (`Issues`) | En este paso (el cuál también puede asignarse<br /> a otro/a persona) es donde se dan las<br /> asignaciones a los desarrolladores. | [Luigui Astohuamán](@luiguimario) |
+| [Merge Requests](#merge-requests) | Una vez recibidas las asignaciones y, que cada<br /> desarrollador haya descargado su copia del<br />proyecto; deberá crear su propio `Merge Request`<br /> para iniciar su trabajo. | - [Luigui Astohuamán](@luiguimario)<br /> - [Erick Quispe](@ertrii)<br /> - [Gerardo A. Muñoz A.](@gmunozasca)<br />- [Giordano](@giordano200699)<br />- [Ktacas](@Ktacas)<br />- [Luis-QT](@Luis-QT)<br />- [Marco Castilla]( @mact35)<br />- [Fatima D. Galindo V.](@fatimagavi)<br />- [Pablo E. Pulido](@pulidovpe)<br /> |
+| [Aprobar un merge](#aprobar-un-merge) | Esta sección es exclusivamente para el<br /> encargado de revisar el código antes de<br /> hacer el merge. | [Luigui Astohuamán](@luiguimario) |
+| [Fusionar los cambios](#fusionar-los-cambios) | Una vez recibida la aprobación ya se puede<br /> realizar la fusión por consola o en *Gitlab*. | - [Luigui Astohuamán](@luiguimario)<br /> - [Erick Quispe](@ertrii)<br /> - [Gerardo A. Muñoz A.](@gmunozasca)<br />- [Giordano](@giordano200699)<br />- [Ktacas](@Ktacas)<br />- [Luis-QT](@Luis-QT)<br />- [Marco Castilla]( @mact35)<br />- [Fatima D. Galindo V.](@fatimagavi)<br />- [Pablo E. Pulido](@pulidovpe)<br /> |
 
 
 <a name="#crear-proyecto"></a>
@@ -91,7 +94,7 @@ Las siguientes especificaciones son exclusivas de la plataforma Gitlab. Y serán
 
 ![Crear Proyecto](img/crea-proyecto.png "Crear proyecto")
 
-<a name="#crear-issues"></a>
+<a name="#crear-incidencias"></a>
 ### Crear Incidencias
 
 Para crear una incidencia lo primero es ubicarse en el proyecto donde se trabajará. Luego en el lado izquierdo ubicamos (dependiendo del idioma configurado) la opción Incidencia ó, `Issues`.
@@ -114,7 +117,7 @@ Al momento de llenar el formulario existen otra consideraciones a saber; las cua
 
 Al crearse, la persona asignada será notificada por la plataforma.
 
-<a name="#merge-request"></a>
+<a name="#merge-requests"></a>
 ### Merge Requests
 
 El/la desarrollador(a), deberá ubicarse en la incidencia creada y dar click en el menú desplegable situado a la derecha del botón que permite crear los `Merge Request`.
@@ -166,8 +169,8 @@ git checkout 2-guia-para-workflow
 
 Una vez hechos los cambios, se recomienda seguir las normas descritas en la sección de [Meaningful Commit Messages](#commit-messages) para detallar la información del *commit* antes de subirlo.
 
-<a name="#aprobar-merge"></a>
-### Aprobar un `Merge Request`
+<a name="#aprobar-un-merge"></a>
+### Aprobar un merge
 
 Además de una revisión personalizada, quien revisa el código cuenta con herramientas en la plataforma, como *diff*.
 
@@ -185,7 +188,7 @@ Una vez hecho esto, puede dejar que la fusión la haga el propio desarrollador(a
 
 ![Merge Requests](img/revisa-merge-request4.jpg "Merge Requests")
 
-<a name="#hacer-merge"></a>
+<a name="#fusionar-los-cambios"></a>
 ### Fusionar los cambios
 
 Existen dos maneras de cerrar el `merge request`. Desde la plataforma de *Gitlab* y desde la consola (lo cual recomendamos).
@@ -212,3 +215,5 @@ Para borrar la rama remota:
 ```
 git push origin --delete 2-guia-para-workflow
 ```
+
+#### [Volver al inicio](#inicio)
