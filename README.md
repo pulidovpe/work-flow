@@ -25,6 +25,7 @@ Todos los repositorios deben contar con:
 - Se recomienda usar letras minúsculas en los nombres.
 - Se recomienda el uso de guiones ( - ).
 - Se recomienda usar nombres identificativos. Ej. *feature-login-facebook*
+- Si existen varias personas trabajando en la misma parte, característica o feature del proyecto, puede ser conveniente tener un branch para todo el equipo y otros branches personales para cada persona.
 
 <a name="commit-messages"></a>
 ## Meaningful Commit Messages
@@ -32,7 +33,7 @@ Todos los repositorios deben contar con:
 **Estructura del Mensaje**
 
 El mensaje de los commit debe consistir en 3 diferentes partes 
-separadas por una linea en blanco: el titulo, un cuerpo 
+separadas por una linea en blanco: el título, un cuerpo 
 opcional y un pie opcional. Algo como lo siguiente:
 
 ```
