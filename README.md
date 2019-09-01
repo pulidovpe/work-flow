@@ -216,4 +216,19 @@ Para borrar la rama remota:
 git push origin --delete 2-guia-para-workflow
 ```
 
+### Manejando las Etiquetas
+
+Una etiqueta sirve para tener un nombre mas fácil de recordar un commit, sirve como un sobrenombre para apuntar hacia ahí.
+
+Para crear una etiqueta con descripción
+
+```
+git tag -a nombre_etiqueta -m "mensaje de la etiqueta"
+```
+Para listar todas las etiquetas en orden alfabético
+```
+git tag
+```
+
+
 #### [Volver al inicio](#inicio)
