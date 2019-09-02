@@ -29,7 +29,6 @@ Todos los repositorios deben contar con:
 
 <a name="commit-messages"></a>
 ## Meaningful Commit Messages
-
 **Estructura del Mensaje**
 
 El mensaje de los commit debe consistir en 3 diferentes partes 
