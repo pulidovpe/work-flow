@@ -12,6 +12,7 @@ Este documento tiene como objetivo proporcionar pautas para la integración de c
 |--|--|
 | [General Conventions](#general-conventions) | Convenciones generales |
 | [Meaningful Commit Messages](#commit-messages) | Mensajes de confirmación significativos |
+| [Basic commands](#basic-commands) | Comandos básicos |
 | [Gitlab Workflow](#gitlab-workflow) | Flujo de Trabajo en Gitlab |
 
 
@@ -72,6 +73,30 @@ para seguimientos. Ej:
 
 Resolves: #b214c5\
 Issues: #03
+
+<a name="#basic-commands"></a>
+## Basic Commands
+
+Para guardar los cambios realizados:
+
+```
+git add --all
+```
+ó
+
+```
+git add .
+```
+Para agregar un commit: 
+
+```
+git commit -a
+```
+ó 
+```
+git commit -am 'Explicacion del commit'
+```
+
 
 <a name="#gitlab-workflow"></a>
 ## Gitlab Workflow
