@@ -188,6 +188,15 @@ Una vez hecho esto, puede dejar que la fusión la haga el propio desarrollador(a
 
 ![Merge Requests](img/revisa-merge-request4.jpg "Merge Requests")
 
+<a name="#trabajo-en-equipo"></a>
+### Trabajo en equipo
+
+Al trabajar en equipo, los `merge request` hechos por cada desarrollador, al ser aprobados y fusionados; pueden ocasionar conflictos con los que alguien que aún no los sube, si no se tienen los últimos cambios.
+Para estos casos se sugiere, antes de subir los cambios; ejecutar un `git fetch` en lugar de un `git pull`. De esta forma se tendrá la ultima versión de la rama *develop* antes de subir nuestros cambios.
+Luego de obtener los cambios, deben fusionarse en la rama del `merge request`. 
+Para no perder los cambios que se encuentren en el *stage* se recomienda usar `git stash` para guardarlos. Luego de hacer el merge podremos recuperarlos con un `git stash apply`.
+
+
 <a name="#fusionar-los-cambios"></a>
 ### Fusionar los cambios
 
