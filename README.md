@@ -188,6 +188,19 @@ Una vez hecho esto, puede dejar que la fusión la haga el propio desarrollador(a
 
 ![Merge Requests](img/revisa-merge-request4.jpg "Merge Requests")
 
+<a name="#trabajo-en-equipo"></a>
+### Trabajo en equipo
+
+Al trabajar en equipo, los `merge request` hechos por cada desarrollador, al ser aprobados y fusionados; pueden ocasionar conflictos con los que alguien que aún no los sube, si no se tienen los últimos cambios.
+Para estos casos se sugiere, antes de subir los cambios; ejecutar un `git fetch` en lugar de un `git pull`. De esta forma se tendrá la ultima versión de la rama *develop* antes de subir nuestros cambios.
+Para no perder los cambios que se encuentren en el *stage* se recomienda usar `git stash` para guardarlos. 
+Luego deben fusionarse en la rama del `merge request` con el siguiente comando:
+```
+git merge -s recursive -X theirs develop
+```
+Finalmente, al hacer el merge podremos recuperarlos con un `git stash apply`. Y nuestros cambios quedarán listos para agregarlos y subirlos para revisión y posterior fusión.
+
+
 <a name="#fusionar-los-cambios"></a>
 ### Fusionar los cambios
 
@@ -215,5 +228,20 @@ Para borrar la rama remota:
 ```
 git push origin --delete 2-guia-para-workflow
 ```
+
+### Manejando las Etiquetas
+
+Una etiqueta sirve para tener un nombre mas fácil de recordar un commit, sirve como un sobrenombre para apuntar hacia ahí.
+
+Para crear una etiqueta con descripción
+
+```
+git tag -a nombre_etiqueta -m "mensaje de la etiqueta"
+```
+Para listar todas las etiquetas en orden alfabético
+```
+git tag
+```
+
 
 #### [Volver al inicio](#inicio)
