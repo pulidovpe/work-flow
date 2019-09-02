@@ -12,6 +12,7 @@ Este documento tiene como objetivo proporcionar pautas para la integración de c
 |--|--|
 | [General Conventions](#general-conventions) | Convenciones generales |
 | [Meaningful Commit Messages](#commit-messages) | Mensajes de confirmación significativos |
+| [Basic commands](#basic-commands) | Comandos básicos |
 | [Gitlab Workflow](#gitlab-workflow) | Flujo de Trabajo en Gitlab |
 
 
@@ -25,14 +26,14 @@ Todos los repositorios deben contar con:
 - Se recomienda usar letras minúsculas en los nombres.
 - Se recomienda el uso de guiones ( - ).
 - Se recomienda usar nombres identificativos. Ej. *feature-login-facebook*
+- Si existen varias personas trabajando en la misma parte, característica o feature del proyecto, puede ser conveniente tener un branch para todo el equipo y otros branches personales para cada persona.
 
 <a name="commit-messages"></a>
 ## Meaningful Commit Messages
-
 **Estructura del Mensaje**
 
 El mensaje de los commit debe consistir en 3 diferentes partes 
-separadas por una linea en blanco: el titulo, un cuerpo 
+separadas por una linea en blanco: el título, un cuerpo 
 opcional y un pie opcional. Algo como lo siguiente:
 
 ```
@@ -72,6 +73,30 @@ para seguimientos. Ej:
 
 Resolves: #b214c5\
 Issues: #03
+
+<a name="#basic-commands"></a>
+## Basic Commands
+
+Para guardar los cambios realizados:
+
+```
+git add --all
+```
+ó
+
+```
+git add .
+```
+Para agregar un commit: 
+
+```
+git commit -a
+```
+ó 
+```
+git commit -am 'Explicacion del commit'
+```
+
 
 <a name="#gitlab-workflow"></a>
 ## Gitlab Workflow
