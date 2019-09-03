@@ -97,6 +97,19 @@ git commit -a
 git commit -am 'Explicacion del commit'
 ```
 
+Existen casos donde tal vez tengamos x equivocación y queremos volver a intentarlo, podemos usar este comando.
+```
+git reset --hard HEAD~1
+```
+Este eliminará nuestro último commit de la rama donde estemos ubicado.
+Pero resulta que queremos eliminar el commit pero conservar los cambios, entonces usaremos este otro comando, sin el `--hard`
+```
+git reset --HEAD~1
+```
+Lo que ocurrirá es que eliminará el último commit pero en el area de trabajo se mantendrá igual. Usted puede verificar sus cambios con:
+```
+git status
+```
 
 <a name="#gitlab-workflow"></a>
 ## Gitlab Workflow
