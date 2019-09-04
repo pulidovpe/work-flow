@@ -111,6 +111,17 @@ Lo que ocurrirá es que eliminará el último commit pero en el area de trabajo 
 git status
 ```
 
+En caso de que tengamos que deshacer cambios de un archivo o directorio específico podemos ejecutar el siguiente comando:
+```bash
+# Archivo específico
+git checkout -- README.md
+```
+```bash
+# Directorio específico
+git checkout -- img/
+```
+Lo que hará es deshacer los cambios que trabajamos en un archivo o todos los archivos de un directorio, y retornará al código del último commit.
+
 <a name="#gitlab-workflow"></a>
 ## Gitlab Workflow
 
