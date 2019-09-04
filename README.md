@@ -122,9 +122,9 @@ Las siguientes especificaciones son exclusivas de la plataforma Gitlab. Y serán
 |--|--|--|
 | [Crear Proyecto](#crear-proyecto) | Aquí se incluye la creación del repositorio y/o<br /> ramas que se necesitarán.<br /> También puede asignar a alguien más. | [Luigui Astohuamán](@luiguimario) |
 | [Crear Incidencias](#crear-incidencias) (`Issues`) | En este paso (el cuál también puede asignarse<br /> a otro/a persona) es donde se dan las<br /> asignaciones a los desarrolladores. | [Luigui Astohuamán](@luiguimario) |
-| [Merge Requests](#merge-requests) | Una vez recibidas las asignaciones y, que cada<br /> desarrollador haya descargado su copia del<br />proyecto; deberá crear su propio `Merge Request`<br /> para iniciar su trabajo. | - [Luigui Astohuamán](@luiguimario)<br /> - [Erick Quispe](@ertrii)<br /> - [Gerardo A. Muñoz A.](@gmunozasca)<br />- [Giordano](@giordano200699)<br />- [Ktacas](@Ktacas)<br />- [Luis-QT](@Luis-QT)<br />- [Marco Castilla]( @mact35)<br />- [Fatima D. Galindo V.](@fatimagavi)<br />- [Pablo E. Pulido](@pulidovpe)<br /> |
+| [Merge Requests](#merge-requests) | Una vez recibidas las asignaciones y, que cada<br /> desarrollador haya descargado su copia del<br />proyecto; deberá crear su propio `Merge Request`<br /> para iniciar su trabajo. | - [Luigui Astohuamán](@luiguimario)<br /> - [Erick Quispe](@ertrii)<br /> - [Gerardo A. Muñoz A.](@gmunozasca)<br />- [Giordano](@giordano200699)<br />- [Ktacas](@Ktacas)<br />- [Luis-QT](@Luis-QT)<br />- [Marco Castilla]( @mact35)<br />- [Fatima D. Galindo V.](@fatimagavi)<br />- [Fredy Astorayme](@FredyAstorayme)<br />- [Pablo E. Pulido](@pulidovpe)<br /> |
 | [Aprobar un merge](#aprobar-un-merge) | Esta sección es exclusivamente para el<br /> encargado de revisar el código antes de<br /> hacer el merge. | [Luigui Astohuamán](@luiguimario) |
-| [Fusionar los cambios](#fusionar-los-cambios) | Una vez recibida la aprobación ya se puede<br /> realizar la fusión por consola o en *Gitlab*. | - [Luigui Astohuamán](@luiguimario)<br /> - [Erick Quispe](@ertrii)<br /> - [Gerardo A. Muñoz A.](@gmunozasca)<br />- [Giordano](@giordano200699)<br />- [Ktacas](@Ktacas)<br />- [Luis-QT](@Luis-QT)<br />- [Marco Castilla]( @mact35)<br />- [Fatima D. Galindo V.](@fatimagavi)<br />- [Pablo E. Pulido](@pulidovpe)<br /> |
+| [Fusionar los cambios](#fusionar-los-cambios) | Una vez recibida la aprobación ya se puede<br /> realizar la fusión por consola o en *Gitlab*. | - [Luigui Astohuamán](@luiguimario)<br /> - [Erick Quispe](@ertrii)<br /> - [Gerardo A. Muñoz A.](@gmunozasca)<br />- [Giordano](@giordano200699)<br />- [Ktacas](@Ktacas)<br />- [Luis-QT](@Luis-QT)<br />- [Marco Castilla]( @mact35)<br />- [Fatima D. Galindo V.](@fatimagavi)<br />- [Fredy Astorayme](@FredyAstorayme)<br />- [Pablo E. Pulido](@pulidovpe)<br /> |
 
 
 <a name="#crear-proyecto"></a>
@@ -205,7 +205,7 @@ Sino usaron `git checkout`, no hay que olvidar cambiarse a la rama correspondien
 git checkout 2-guia-para-workflow
 ```
 
-Una vez hechos los cambios, se recomienda seguir las normas descritas en la sección de [Meaningful Commit Messages](#commit-messages) para detallar la información del *commit* antes de subirlo.
+Una vez hechos los cambios, se recomienda seguir las normas descritas en la sección de [Meaningful Commit Messages](#commit-messages) para detallar la información del *commit* antes de subirlo. Tambien es importante resaltar que la version en la que se trabaja debe estar actualizada, de hacer un commit de una version antigua puede generar conflicto.
 
 <a name="#aprobar-un-merge"></a>
 ### Aprobar un merge
