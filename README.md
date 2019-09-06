@@ -26,7 +26,11 @@ Todos los repositorios deben contar con:
 - Se recomienda usar letras minúsculas en los nombres.
 - Se recomienda el uso de guiones ( - ).
 - Se recomienda usar nombres identificativos. Ej. *feature-login-facebook*
+<<<<<<< HEAD
 - Si existen varias personas trabajando en la misma parte, característica o feature del proyecto, puede ser conveniente tener un branch para todo el equipo y otros branches personales para cada persona.
+=======
+- Se recomienda  eliminar tu branch del repositorio remoto despes de haber sido integrado a menos que sea necesario.
+>>>>>>> docs: General Conventions
 
 <a name="commit-messages"></a>
 ## Meaningful Commit Messages
@@ -71,7 +75,6 @@ de cada linea a no más de 72 caracteres.
 El pie es opcional al igual que el cuerpo, pero este es usado 
 para seguimientos. Ej:
 
-Resolves: #b214c5\
 Issues: #03
 
 <a name="#basic-commands"></a>
@@ -210,7 +213,7 @@ git checkout -b 2-guia-para-workflow origin/2-guia-para-workflow
 ![Merge Requests](img/crea-merge-request4.jpg "Merge Requests")
 
 Esto les mostrará la información de las ramas remotas. Luego enlazaremos la rama local con la remota.
-Sino usaron `git checkout`, no hay que olvidar cambiarse a la rama correspondiente.
+Si no usaron `git checkout`, no hay que olvidar cambiarse a la rama correspondiente.
 
 ```
 git checkout 2-guia-para-workflow
@@ -278,6 +281,7 @@ Para borrar la rama remota:
 git push origin --delete 2-guia-para-workflow
 ```
 
+<<<<<<< HEAD
 ### Manejando las Etiquetas
 
 Una etiqueta sirve para tener un nombre mas fácil de recordar un commit, sirve como un sobrenombre para apuntar hacia ahí.
@@ -292,5 +296,7 @@ Para listar todas las etiquetas en orden alfabético
 git tag
 ```
 
+=======
+>>>>>>> docs: General Conventions
 
 #### [Volver al inicio](#inicio)
