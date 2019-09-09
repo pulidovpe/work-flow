@@ -26,12 +26,10 @@ Todos los repositorios deben contar con:
 - Una rama `develop`. La rama de la cuál cada desarrollador sacará sus respectivas ramas personalizadas para `feature` y `fix`.
 - Se recomienda usar letras minúsculas en los nombres.
 - Se recomienda el uso de guiones ( - ).
+
 - Se recomienda usar nombres identificativos. Ej. *feature-login-facebook*
-<<<<<<< HEAD
 - Si existen varias personas trabajando en la misma parte, característica o feature del proyecto, puede ser conveniente tener un branch para todo el equipo y otros branches personales para cada persona.
-=======
 - Se recomienda  eliminar tu branch del repositorio remoto despes de haber sido integrado a menos que sea necesario.
->>>>>>> docs: General Conventions
 
 
 <a name="commit-messages"></a>
