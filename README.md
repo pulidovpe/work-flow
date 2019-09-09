@@ -5,6 +5,7 @@ Este documento tiene como objetivo proporcionar pautas para la integración de c
 
 >Este repositorio es un trabajo en progreso. De hecho, su primer "Merge Request" podría ser corregir o agregar nuevas directrices a este documento. Para llevar esto a cabo póngase en contacto con el lider del equipo o con el encargado de "DevOps".
 
+
 <a name="#inicio"></a>
 ### Inicio
 
@@ -32,6 +33,7 @@ Todos los repositorios deben contar con:
 - Se recomienda  eliminar tu branch del repositorio remoto despes de haber sido integrado a menos que sea necesario.
 >>>>>>> docs: General Conventions
 
+
 <a name="commit-messages"></a>
 ## Meaningful Commit Messages
 **Estructura del Mensaje**
@@ -40,7 +42,7 @@ El mensaje de los commit debe consistir en 3 diferentes partes
 separadas por una linea en blanco: el título, un cuerpo 
 opcional y un pie opcional. Algo como lo siguiente:
 
-```
+```Shell
 type: subject 
 
 body 
@@ -75,7 +77,9 @@ de cada linea a no más de 72 caracteres.
 El pie es opcional al igual que el cuerpo, pero este es usado 
 para seguimientos. Ej:
 
+```Shell
 Issues: #03
+```
 
 <a name="#basic-commands"></a>
 ## Basic Commands
@@ -135,16 +139,18 @@ Las siguientes especificaciones son exclusivas de la plataforma Gitlab. Y serán
 | Que debe hacerse | Detalle | Quien lo hace |
 |--|--|--|
 | [Crear Proyecto](#crear-proyecto) | Aquí se incluye la creación del repositorio y/o<br /> ramas que se necesitarán.<br /> También puede asignar a alguien más. | [Luigui Astohuamán](@luiguimario) |
-| [Crear Incidencias](#crear-incidencias) (`Issues`) | En este paso (el cuál también puede asignarse<br /> a otro/a persona) es donde se dan las<br /> asignaciones a los desarrolladores. | [Luigui Astohuamán](@luiguimario) |
-| [Merge Requests](#merge-requests) | Una vez recibidas las asignaciones y, que cada<br /> desarrollador haya descargado su copia del<br />proyecto; deberá crear su propio `Merge Request`<br /> para iniciar su trabajo. | - [Luigui Astohuamán](@luiguimario)<br /> - [Erick Quispe](@ertrii)<br /> - [Gerardo A. Muñoz A.](@gmunozasca)<br />- [Giordano](@giordano200699)<br />- [Ktacas](@Ktacas)<br />- [Luis-QT](@Luis-QT)<br />- [Marco Castilla]( @mact35)<br />- [Fatima D. Galindo V.](@fatimagavi)<br />- [Fredy Astorayme](@FredyAstorayme)<br />- [Pablo E. Pulido](@pulidovpe)<br /> |
-| [Aprobar un merge](#aprobar-un-merge) | Esta sección es exclusivamente para el<br /> encargado de revisar el código antes de<br /> hacer el merge. | [Luigui Astohuamán](@luiguimario) |
-| [Fusionar los cambios](#fusionar-los-cambios) | Una vez recibida la aprobación ya se puede<br /> realizar la fusión por consola o en *Gitlab*. | - [Luigui Astohuamán](@luiguimario)<br /> - [Erick Quispe](@ertrii)<br /> - [Gerardo A. Muñoz A.](@gmunozasca)<br />- [Giordano](@giordano200699)<br />- [Ktacas](@Ktacas)<br />- [Luis-QT](@Luis-QT)<br />- [Marco Castilla]( @mact35)<br />- [Fatima D. Galindo V.](@fatimagavi)<br />- [Fredy Astorayme](@FredyAstorayme)<br />- [Pablo E. Pulido](@pulidovpe)<br /> |
+| [Crear Incidencias](#crear-incidencias) (`Issues`) | En este paso (el cuál también puede asignarse<br /> a otro/a persona) es donde se dan las<br /> asignaciones a los desarrolladores. | - [Luigui Astohuamán](@luiguimario)<br /> - [Erick Quispe](@ertrii)<br /> - [Gerardo A. Muñoz A.](@gmunozasca) |
+| [Merge Requests](#merge-requests) | Una vez recibidas las asignaciones y, que cada<br /> desarrollador haya descargado su copia del<br />proyecto; deberá crear su propio `Merge Request`<br /> para iniciar su trabajo. | - [Luigui Astohuamán](@luiguimario)<br /> - [Erick Quispe](@ertrii)<br /> - [Gerardo A. Muñoz A.](@gmunozasca)<br />- [Giordano](@giordano200699)<br />- [Ktacas](@Ktacas)<br />- [Luis-QT](@Luis-QT)<br />- [Marco Castilla]( @mact35)<br />- [Fatima D. Galindo V.](@fatimagavi)<br />- [Pablo E. Pulido](@pulidovpe)<br /> |
+| [Aprobar un merge](#aprobar-un-merge) | Esta sección es exclusivamente para el<br /> encargado de revisar el código antes de<br /> hacer el merge. | - [Luigui Astohuamán](@luiguimario)<br /> - [Erick Quispe](@ertrii)<br /> - [Gerardo A. Muñoz A.](@gmunozasca) |
+| [Trabajo en equipo](#trabajo-en-equipo") | Solución de conflictos para cuando se trabaja<br /> en equipo. | - [Luigui Astohuamán](@luiguimario)<br /> - [Erick Quispe](@ertrii)<br /> - [Gerardo A. Muñoz A.](@gmunozasca)<br />- [Giordano](@giordano200699)<br />- [Ktacas](@Ktacas)<br />- [Luis-QT](@Luis-QT)<br />- [Marco Castilla]( @mact35)<br />- [Fatima D. Galindo V.](@fatimagavi)<br />- [Pablo E. Pulido](@pulidovpe)<br /> |
+| [Fusionar los cambios](#fusionar-los-cambios) | Una vez recibida la aprobación ya se puede<br /> realizar la fusión por consola o en *Gitlab*. | - [Luigui Astohuamán](@luiguimario)<br /> - [Erick Quispe](@ertrii)<br /> - [Gerardo A. Muñoz A.](@gmunozasca)<br />- [Giordano](@giordano200699)<br />- [Ktacas](@Ktacas)<br />- [Luis-QT](@Luis-QT)<br />- [Marco Castilla]( @mact35)<br />- [Fatima D. Galindo V.](@fatimagavi)<br />- [Pablo E. Pulido](@pulidovpe)<br /> |
 
 
 <a name="#crear-proyecto"></a>
 ### Crear Proyecto
 
 ![Crear Proyecto](img/crea-proyecto.png "Crear proyecto")
+
 
 <a name="#crear-incidencias"></a>
 ### Crear Incidencias
@@ -168,6 +174,7 @@ Al momento de llenar el formulario existen otra consideraciones a saber; las cua
 ![Crear Incidencias](img/crea-issue4.jpg "Crear Incidencias")
 
 Al crearse, la persona asignada será notificada por la plataforma.
+
 
 <a name="#merge-requests"></a>
 ### Merge Requests
@@ -221,6 +228,7 @@ git checkout 2-guia-para-workflow
 
 Una vez hechos los cambios, se recomienda seguir las normas descritas en la sección de [Meaningful Commit Messages](#commit-messages) para detallar la información del *commit* antes de subirlo. Tambien es importante resaltar que la version en la que se trabaja debe estar actualizada, de hacer un commit de una version antigua puede generar conflicto.
 
+
 <a name="#aprobar-un-merge"></a>
 ### Aprobar un merge
 
@@ -240,23 +248,65 @@ Una vez hecho esto, puede dejar que la fusión la haga el propio desarrollador(a
 
 ![Merge Requests](img/revisa-merge-request4.jpg "Merge Requests")
 
+
+
 <a name="#trabajo-en-equipo"></a>
 ### Trabajo en equipo
 
-Al trabajar en equipo, los `merge request` hechos por cada desarrollador, al ser aprobados y fusionados; pueden ocasionar conflictos con los que alguien que aún no los sube, si no se tienen los últimos cambios.
-Para estos casos se sugiere, antes de subir los cambios; ejecutar un `git fetch` en lugar de un `git pull`. De esta forma se tendrá la ultima versión de la rama *develop* antes de subir nuestros cambios.
-Para no perder los cambios que se encuentren en el *stage* se recomienda usar `git stash` para guardarlos. 
-Luego deben fusionarse en la rama del `merge request` con el siguiente comando:
+
+Al trabajar en equipo, los `merge request` hechos por cada desarrollador pueden ir en diferentes intervalos de tiempo. Todavía más, cuando les llegue el momento de ser aprobados y fusionados.
+En estos casos, pueden ocasionar conflictos con los de alguien que aún no sube sus cambios, mostrando mensajes como el siguiente:
+
+Ej.
+```Shell
+la rama de origen está 2 commits detrás en relación a la rama de destino
 ```
-git merge -s recursive -X theirs develop
+
+Para evitar que ocurran estos escenarios, se sugiere que antes de hacer un commit y subir los cambios tomar previsiones, bajando la última versión del repositorio:
+
+```Shell
+$ git fetch
 ```
-Finalmente, al hacer el merge podremos recuperarlos con un `git stash apply`. Y nuestros cambios quedarán listos para agregarlos y subirlos para revisión y posterior fusión.
+
+Se recomienda ejecutar un `git fetch` en lugar de un `git pull` debido a que el fetch sólo recupera todos los datos del proyecto remoto que no tengas todavía, pero no fusiona las ramas sin preguntar como lo hace el pull, que lo hace automáticamente. Hecho esto, tendremos la ultima versión de la rama *develop* y nuestros cambios en el *stage* seguirán intactos.
+
+>En caso de que ya tengamos algún *commit* ejecutado, pero no lo hayamos subido con `git push` porque estabamos trabajando en otro, tenemos la opción de regresar al estado anterior usando un `git reset --soft HEAD~1`. Esto deshará el commit y pondrá nuestros cambios en el *stage*.
+
+
+Una vez tengamos la versión más actualizada del proyecto en nuestro repositorio *local*; para no perder los cambios que se encuentren en el *stage* (sin haber ejecutado un commit) respaldaremos nuestro trabajo de esta forma:
+
+```Shell
+$ git stash
+```
+
+>Antes de ejecutar el siguiente comando, es de suponer; que debemos encontrarnos ubicados en nuestra rama de trabajo. Es decir, en la rama que nos generó el `merge request`.
+
+
+Luego de tomadas las previsiones, podremos fusionar los nuevos cambios de la rama *develop* a nuestra rama de trabajo con el siguiente comando:
+
+```Shell
+$ git merge -s recursive -X theirs develop
+```
+
+Lo que ha ocurrido; es que hemos hecho la fusión, dándole prioridad a los nuevos cambios de la rama *develop* (`theirs`) para que sobrescriba los nuestros (`ours`) de manera *recursiva*.
+Finalmente, después de hacer el merge podremos recuperar nuestros cambios (que aún no estaban *commiteados*). Y estos quedarán listos para agregarlos y subirlos para revisión y posterior fusión.
+
+```Shell
+$ git stash apply
+
+$ git add --all
+
+$ git commit -a
+
+$ git push
+```
 
 
 <a name="#fusionar-los-cambios"></a>
 ### Fusionar los cambios
 
-Existen dos maneras de cerrar el `merge request`. Desde la plataforma de *Gitlab* y desde la consola (lo cual recomendamos).
+Existen dos maneras de cerrar el `merge request`. Desde la plataforma de *Gitlab* (lo cual recomendamos) y desde la consola.
+
 Desde *Gitlab*, luego de marcar los *checklist* `Eliminar rama origen` y `Squash commits`. Desde aquí, evitamos hacer un *fast-forward* y eliminamos la rama del repositorio origen.
 
 ![Merge Requests](img/cerrar-merge-request1.jpg "Merge Requests")
@@ -264,39 +314,44 @@ Desde *Gitlab*, luego de marcar los *checklist* `Eliminar rama origen` y `Squash
 Y desde la consola, teniendo cuidado de no permitir un *fast-forward* y previniendo así algún conflicto de versiones.
 Ya ubicados en la rama correspondiente:
 
-```
-git fetch origin
+```Shell
+$ git fetch origin
 
-git checkout origin/develop
+$ git checkout origin/develop
 
-git merge --no-ff 2-guia-para-workflow
+$ git merge --no-ff 2-guia-para-workflow
 ```
+
 Y luego subiendo los cambios a la rama *develop*.
 
-```
-git push origin develop
-```
-Para borrar la rama remota:
-```
-git push origin --delete 2-guia-para-workflow
+```Shell
+$ git push origin develop
 ```
 
-<<<<<<< HEAD
+Para borrar la rama remota:
+
+```Shell
+$ git push origin --delete 2-guia-para-workflow
+```
+
+
+#### [Volver a Gitlab Workflow](#gitlab-workflow)
+
 ### Manejando las Etiquetas
 
 Una etiqueta sirve para tener un nombre mas fácil de recordar un commit, sirve como un sobrenombre para apuntar hacia ahí.
 
-Para crear una etiqueta con descripción
+Para crear una etiqueta con descripción:
 
-```
-git tag -a nombre_etiqueta -m "mensaje de la etiqueta"
-```
-Para listar todas las etiquetas en orden alfabético
-```
-git tag
+```Shell
+$ git tag -a nombre_etiqueta -m "mensaje de la etiqueta"
 ```
 
-=======
->>>>>>> docs: General Conventions
+Para listar todas las etiquetas en orden alfabético:
+
+```Shell
+$ git tag
+```
+
 
 #### [Volver al inicio](#inicio)
