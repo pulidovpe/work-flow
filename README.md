@@ -13,11 +13,10 @@ Este documento tiene como objetivo proporcionar pautas para la integración de c
 |--|--|
 | [General Conventions](#general-conventions) | Convenciones generales |
 | [Meaningful Commit Messages](#commit-messages) | Mensajes de confirmación significativos |
-| [Basic commands](#basic-commands) | Comandos básicos |
 | [Gitlab Workflow](#gitlab-workflow) | Flujo de Trabajo en Gitlab |
 
 
-<a name="general-conventions"></a>
+<a name="#general-conventions"></a>
 ## General Conventions
 
 Todos los repositorios deben contar con:
@@ -26,18 +25,16 @@ Todos los repositorios deben contar con:
 - Una rama `develop`. La rama de la cuál cada desarrollador sacará sus respectivas ramas personalizadas para `feature` y `fix`.
 - Se recomienda usar letras minúsculas en los nombres.
 - Se recomienda el uso de guiones ( - ).
-
 - Se recomienda usar nombres identificativos. Ej. *feature-login-facebook*
-- Si existen varias personas trabajando en la misma parte, característica o feature del proyecto, puede ser conveniente tener un branch para todo el equipo y otros branches personales para cada persona.
-- Se recomienda  eliminar tu branch del repositorio remoto despes de haber sido integrado a menos que sea necesario.
 
 
-<a name="commit-messages"></a>
+<a name="#commit-messages"></a>
 ## Meaningful Commit Messages
+
 **Estructura del Mensaje**
 
 El mensaje de los commit debe consistir en 3 diferentes partes 
-separadas por una linea en blanco: el título, un cuerpo 
+separadas por una linea en blanco: el titulo, un cuerpo 
 opcional y un pie opcional. Algo como lo siguiente:
 
 ```Shell
@@ -76,56 +73,9 @@ El pie es opcional al igual que el cuerpo, pero este es usado
 para seguimientos. Ej:
 
 ```Shell
+Resolves: #b214c5\
 Issues: #03
 ```
-
-<a name="#basic-commands"></a>
-## Basic Commands
-
-Para guardar los cambios realizados:
-
-```
-git add --all
-```
-ó
-
-```
-git add .
-```
-Para agregar un commit: 
-
-```
-git commit -a
-```
-ó 
-```
-git commit -am 'Explicacion del commit'
-```
-
-Existen casos donde tal vez tengamos x equivocación y queremos volver a intentarlo, podemos usar este comando.
-```
-git reset --hard HEAD~1
-```
-Este eliminará nuestro último commit de la rama donde estemos ubicado.
-Pero resulta que queremos eliminar el commit pero conservar los cambios, entonces usaremos este otro comando, sin el `--hard`
-```
-git reset --HEAD~1
-```
-Lo que ocurrirá es que eliminará el último commit pero en el area de trabajo se mantendrá igual. Usted puede verificar sus cambios con:
-```
-git status
-```
-
-En caso de que tengamos que deshacer cambios de un archivo o directorio específico podemos ejecutar el siguiente comando:
-```bash
-# Archivo específico
-git checkout -- README.md
-```
-```bash
-# Directorio específico
-git checkout -- img/
-```
-Lo que hará es deshacer los cambios que trabajamos en un archivo o todos los archivos de un directorio, y retornará al código del último commit.
 
 <a name="#gitlab-workflow"></a>
 ## Gitlab Workflow
@@ -140,8 +90,8 @@ Las siguientes especificaciones son exclusivas de la plataforma Gitlab. Y serán
 | [Crear Incidencias](#crear-incidencias) (`Issues`) | En este paso (el cuál también puede asignarse<br /> a otro/a persona) es donde se dan las<br /> asignaciones a los desarrolladores. | - [Luigui Astohuamán](@luiguimario)<br /> - [Erick Quispe](@ertrii)<br /> - [Gerardo A. Muñoz A.](@gmunozasca) |
 | [Merge Requests](#merge-requests) | Una vez recibidas las asignaciones y, que cada<br /> desarrollador haya descargado su copia del<br />proyecto; deberá crear su propio `Merge Request`<br /> para iniciar su trabajo. | - [Luigui Astohuamán](@luiguimario)<br /> - [Erick Quispe](@ertrii)<br /> - [Gerardo A. Muñoz A.](@gmunozasca)<br />- [Giordano](@giordano200699)<br />- [Ktacas](@Ktacas)<br />- [Luis-QT](@Luis-QT)<br />- [Marco Castilla]( @mact35)<br />- [Fatima D. Galindo V.](@fatimagavi)<br />- [Pablo E. Pulido](@pulidovpe)<br /> |
 | [Aprobar un merge](#aprobar-un-merge) | Esta sección es exclusivamente para el<br /> encargado de revisar el código antes de<br /> hacer el merge. | - [Luigui Astohuamán](@luiguimario)<br /> - [Erick Quispe](@ertrii)<br /> - [Gerardo A. Muñoz A.](@gmunozasca) |
-| [Trabajo en equipo](#trabajo-en-equipo") | Solución de conflictos para cuando se trabaja<br /> en equipo. | - [Luigui Astohuamán](@luiguimario)<br /> - [Erick Quispe](@ertrii)<br /> - [Gerardo A. Muñoz A.](@gmunozasca)<br />- [Giordano](@giordano200699)<br />- [Ktacas](@Ktacas)<br />- [Luis-QT](@Luis-QT)<br />- [Marco Castilla]( @mact35)<br />- [Fatima D. Galindo V.](@fatimagavi)<br />- [Fredy Astorayme](@FredyAstorayme)<br />- [Pablo E. Pulido](@pulidovpe)<br /> |
-| [Fusionar los cambios](#fusionar-los-cambios) | Una vez recibida la aprobación ya se puede<br /> realizar la fusión por consola o en *Gitlab*. | - [Luigui Astohuamán](@luiguimario)<br /> - [Erick Quispe](@ertrii)<br /> - [Gerardo A. Muñoz A.](@gmunozasca)<br />- [Giordano](@giordano200699)<br />- [Ktacas](@Ktacas)<br />- [Luis-QT](@Luis-QT)<br />- [Marco Castilla]( @mact35)<br />- [Fatima D. Galindo V.](@fatimagavi)<br />- [Fredy Astorayme](@FredyAstorayme)<br />- [Pablo E. Pulido](@pulidovpe)<br /> |
+| [Trabajo en equipo](#trabajo-en-equipo") | Solución de conflictos para cuando se trabaja<br /> en equipo. | - [Luigui Astohuamán](@luiguimario)<br /> - [Erick Quispe](@ertrii)<br /> - [Gerardo A. Muñoz A.](@gmunozasca)<br />- [Giordano](@giordano200699)<br />- [Ktacas](@Ktacas)<br />- [Luis-QT](@Luis-QT)<br />- [Marco Castilla]( @mact35)<br />- [Fatima D. Galindo V.](@fatimagavi)<br />- [Pablo E. Pulido](@pulidovpe)<br /> |
+| [Fusionar los cambios](#fusionar-los-cambios) | Una vez recibida la aprobación ya se puede<br /> realizar la fusión por consola o en *Gitlab*. | - [Luigui Astohuamán](@luiguimario)<br /> - [Erick Quispe](@ertrii)<br /> - [Gerardo A. Muñoz A.](@gmunozasca)<br />- [Giordano](@giordano200699)<br />- [Ktacas](@Ktacas)<br />- [Luis-QT](@Luis-QT)<br />- [Marco Castilla]( @mact35)<br />- [Fatima D. Galindo V.](@fatimagavi)<br />- [Pablo E. Pulido](@pulidovpe)<br /> |
 
 
 <a name="#crear-proyecto"></a>
@@ -218,13 +168,13 @@ git checkout -b 2-guia-para-workflow origin/2-guia-para-workflow
 ![Merge Requests](img/crea-merge-request4.jpg "Merge Requests")
 
 Esto les mostrará la información de las ramas remotas. Luego enlazaremos la rama local con la remota.
-Si no usaron `git checkout`, no hay que olvidar cambiarse a la rama correspondiente.
+Sino usaron `git checkout`, no hay que olvidar cambiarse a la rama correspondiente.
 
 ```
 git checkout 2-guia-para-workflow
 ```
 
-Una vez hechos los cambios, se recomienda seguir las normas descritas en la sección de [Meaningful Commit Messages](#commit-messages) para detallar la información del *commit* antes de subirlo. Tambien es importante resaltar que la version en la que se trabaja debe estar actualizada, de hacer un commit de una version antigua puede generar conflicto.
+Una vez hechos los cambios, se recomienda seguir las normas descritas en la sección de [Meaningful Commit Messages](#commit-messages) para detallar la información del *commit* antes de subirlo.
 
 
 <a name="#aprobar-un-merge"></a>
@@ -245,7 +195,6 @@ Una vez hecho esto, puede dejar que la fusión la haga el propio desarrollador(a
 ![Merge Requests](img/revisa-merge-request3.jpg "Merge Requests")
 
 ![Merge Requests](img/revisa-merge-request4.jpg "Merge Requests")
-
 
 
 <a name="#trabajo-en-equipo"></a>
@@ -331,7 +280,6 @@ Para borrar la rama remota:
 ```Shell
 $ git push origin --delete 2-guia-para-workflow
 ```
-
 
 #### [Volver a Gitlab Workflow](#gitlab-workflow)
 
