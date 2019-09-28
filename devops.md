@@ -7,7 +7,7 @@ Este documento tiene como objetivo proporcionar pautas para la integración, ent
 
 
 <a name="#inicio"></a>
-### Inicio
+#### Inicio
 
 | Indice |
 |--|
@@ -31,7 +31,7 @@ Este cambio pasa por eliminar la tradicional distancia entre programadores y adm
 
 ![DevOps](img/devops.jpg "DevOps")
 
-<div style="text-align:right"><a name="#inicio">Volver al inicio</a></div>
+#### [Volver al inicio](#inicio)
 <a name="##empezando"></a>
 ## Empezando
 
@@ -54,7 +54,7 @@ Cada caso es distinto, pero si se siguen buenas prácticas y se adopta esta cult
 - Notificar cada vez que se desee desplegar una versión de prueba o `artifact` en el entorno de *Desarrollo* y así comprobar features y realizar test al API.
 - Para los casos de despliegue de APIs que necesiten variables de entorno en un archivo `.env` deben dirigirse al encargado de `DevOps` y notificarle acerca de las mismas.
 
-<div style="text-align:right"><a name="#inicio">Volver al inicio</a></div>
+#### [Volver al inicio](#inicio)
 <a name="#donde-ver-el-entorno"></a>
 ## Donde ver el entorno
 
@@ -71,7 +71,7 @@ A continuación la totalidad de los `Jobs` ejecutados sin incluir *produccion*.
 
 ![pipeline completo](img/pipeline-completo.jpg "pipeline completo")
 
-<div style="text-align:right"><a name="#inicio">Volver al inicio</a></div>
+#### [Volver al inicio](#inicio)
 <a name="#donde-ver-el-api"></a>
 ## Donde ver el API
 
@@ -86,7 +86,7 @@ Luego que estemos ahí, vamos al final de la página donde deberemos ver tanto e
 
 ![ver ip instancia](img/ver-ip-instancia.jpg "ver ip instancia")
 
-<div style="text-align:right"><a name="#inicio">Volver al inicio</a></div>
+#### [Volver al inicio](#inicio)
 <a name="#los-entornos"></a>
 ## Los entornos
 
@@ -102,7 +102,7 @@ La instancia también podrá ser detenida y eliminada de forma manual desde pág
 
 <div style="text-align:center"><img src="img/eliminar-entorno2.jpg" /></div>
 
-<div style="text-align:right"><a name="#inicio">Volver al inicio</a></div>
+#### [Volver al inicio](#inicio)
 <a name="#el-entorno-develop"></a>
 ## El entorno Develop
 
@@ -111,7 +111,7 @@ Además de los entornos que tengan en sus computadoras personales, contarán con
 
 <div style="text-align:center"><img src="img/entorno-develop.jpg" /></div>
 
-<div style="text-align:right"><a name="#inicio">Volver al inicio</a></div>
+#### [Volver al inicio](#inicio)
 <a name="#el-entorno-staging"></a>
 ## El entorno Staging
 
@@ -123,7 +123,7 @@ No está demás decir que, las pruebas que se efectuarán en este entorno; deben
 
 <div style="text-align:center"><img src="img/entorno-staging.jpg" /></div>
 
-<div style="text-align:right"><a name="#inicio">Volver al inicio</a></div>
+#### [Volver al inicio](#inicio)
 <a name="#el-ciclo-completo"></a>
 ## El ciclo completo
 
@@ -131,8 +131,6 @@ A continuación una representación del ciclo completo de desarrollo:
 
 <div style="text-align:center"><img src="img/pipeline-stages.jpg" /></div>
 
-<div style="text-align:right"><a name="#inicio"><p>Volver al inicio</p></a>
-</div>
-
+#### [Volver al inicio](#inicio)
 <a name="#que-sigue"></a>
 ### Que sigue
