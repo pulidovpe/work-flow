@@ -13,13 +13,14 @@ Este documento tiene como objetivo proporcionar pautas para la integración, ent
 |--|
 | [¿Que es `DevOps`?](#devops) |
 | [Empezando](#empezando) |
-| [Donde ver el entorno](#donde-ver-el-entorno) |
-| [Donde ver el API](#donde-ver-el-api) |
 | [Los entornos](#los-entornos) |
 | [El entorno Develop](#el-entorno-develop) |
 | [El entorno Staging](#el-entorno-staging) |
 | [El ciclo completo](#el-ciclo-completo) |
-| [Que sigue](#que-sigue) |
+| [Donde ver los entornos](#donde-ver-los-entornos) |
+| [Donde ver el Frontend](#donde-ver-el-frontend) |
+| [Donde ver el Backend](#donde-ver-el-backend) |
+| [Como crear un `Release`](#como-crear-un-release) |
 
 
 <a name="#devops"></a>
@@ -49,52 +50,19 @@ Cada caso es distinto, pero si se siguen buenas prácticas y se adopta esta cult
 ### Para los líderes de equipo
 
 - Durante su revisión a los `merge request`, hacer *code review*. Es decir, comentar el código revisado en la plataforma de Gitlab.
-- Misma recomendación a los demás desarrolladores.
 - Mantener comunicación al día con el encargado de `DevOps` en caso de despliegues.
 - Notificar cada vez que se desee desplegar una versión de prueba o `artifact` en el entorno de *Desarrollo* y así comprobar features y realizar test al API.
 - Para los casos de despliegue de APIs que necesiten variables de entorno en un archivo `.env` deben dirigirse al encargado de `DevOps` y notificarle acerca de las mismas.
 
 #### [Volver al inicio](#inicio)
-<a name="#donde-ver-el-entorno"></a>
-## Donde ver el entorno
-
-Una vez recibida la notificación del encargado de `DevOps` para ver los entornos desplegados del proyecto en desarrollo hay que dirigirse a la plataforma de Gitlab, específicamente al último `merge request` abierto del proyecto designado para tal fin (`monorepo`).
-Desde el enlace señalado se podrá acceder al entorno del proyecto desplegado. 
-
-![merge request](img/merge-request.jpg "merge request")
-
-Dando click en el número de `pipeline` podremos desplazarnos directamente a la página donde se detallan los `Jobs` ejecutados.
-
-![pipeline paso](img/pipeline-paso.jpg "pipeline paso")
-
-A continuación la totalidad de los `Jobs` ejecutados sin incluir *produccion*.
-
-![pipeline completo](img/pipeline-completo.jpg "pipeline completo")
-
-#### [Volver al inicio](#inicio)
-<a name="#donde-ver-el-api"></a>
-## Donde ver el API
-
-Cuando un proyecto sea de `backend` y posea un API Rest que consumir también se desplegará un entorno. 
-En aquellos casos en que dicho entorno no muestre una URL publicada en la pantalla del [`merge request`](#donde-ver-el-entorno), deberemos dirigirnos al `pipeline` y dar click en el `Job` de despliegue de la instancia EC2.
-
-> De momento, no se poseen IPs estáticas para los entornos.
-
-<div style="text-align:center"><img src="img/ver-instancia.jpg" /></div>
-
-Luego que estemos ahí, vamos al final de la página donde deberemos ver tanto el DNS público como la ip.
-
-![ver ip instancia](img/ver-ip-instancia.jpg "ver ip instancia")
-
-#### [Volver al inicio](#inicio)
 <a name="#los-entornos"></a>
 ## Los entornos
 
-Los entornos de trabajo, preparados en el `pipeline`; se despliegan de forma automática (o manual) en la plataforma de Amazon Web Services. 
-Para el caso de proyectos estáticos diseñados específicamente para el *frontend* se utilizarán Buckets S3 con una *URL* fija. Dichos buckets se desplegarán al ejecutarse el `pipeline`; y será eliminado su contenido (deteniendo el entorno de forma manual) una vez concluidas las pruebas.\
-En cuanto a los proyectos tipo *backend* cuya configuración es mas exigente; se usará una Instancia EC2 (también en Amazon) generada automáticamente para este único fin.
+Los entornos de trabajo, preparados en el `pipeline`; se despliegan de forma automática (o manual) en la plataforma de Amazon Web Services.\ 
+Para el caso de proyectos estáticos diseñados específicamente para el *frontend* se utilizarán Buckets S3 con una *URL* fija. Dichos buckets se desplegarán automáticamente al ejecutarse el `pipeline`; y será eliminado su contenido (deteniendo el entorno de forma manual) una vez concluidas las pruebas.\
+En cuanto a los proyectos tipo *backend* cuya configuración es mas exigente; se usará una Instancia EC2 (también en Amazon) generada automáticamente para este único fin.\
 Dicha instancia, tendrá todo el software requerido para que el entorno pueda ejecutarse sin problemas y las pruebas se realicen el tiempo que sea necesario.\ 
-Además, dicha instancia ya estará configurada y tendrá acceso una base de datos RDS en *Postgre* (también alojada en Amazon) a la cual tienen acceso los integrantes del equipo del *Backend* para poder realizar sus pruebas.
+Además, la instancia ya estará configurada y tendrá acceso una base de datos RDS en *Postgre* (también alojada en Amazon) a la cual tienen acceso los integrantes del equipo del *Backend* para poder realizar sus pruebas.
 
 <div style="text-align:center"><img src="img/eliminar-entorno1.jpg" /></div>
 
@@ -107,7 +75,8 @@ La instancia también podrá ser detenida y eliminada de forma manual desde pág
 ## El entorno Develop
 
 En los entornos desplegados los equipos de desarrollo pueden comprobar el avance de su trabajo. Pueden comprobar su diseño y desempeño. Y en caso de ser un API, pueden realizar pruebas con una aplicación como *Postman*, *Swagger Inspector*, *Insomnia*, entre otros.\
-Además de los entornos que tengan en sus computadoras personales, contarán con este entorno remoto para poder ver el avance de su trabajo y saber si está listo para generar un `release` y ser desplegado en el siguiente entorno ó, hacer correcciones en el código.
+Además de los entornos que tengan en sus computadoras personales, contarán con este entorno remoto para poder ver el avance de su trabajo y saber si está listo para generar un `release` y ser desplegado en el siguiente entorno (*Staging*) ó, hacer correcciones en el código.\
+Este entorno, servirá para que todo el equipo de desarrollo pueda hacer pruebas integrales al completar un `Sprint` (Front y Back), de no encontrarse ningun inconveniente el lider del equipo de desarrollo le comunicará al equipo de `QA` que pueden trasladar dicha versión al ambiente de *Staging* para su revisión posterior.
 
 <div style="text-align:center"><img src="img/entorno-develop.jpg" /></div>
 
@@ -115,7 +84,7 @@ Además de los entornos que tengan en sus computadoras personales, contarán con
 <a name="#el-entorno-staging"></a>
 ## El entorno Staging
 
-En estos entornos, suelen desplegarse los `releases`. Generalemente al completar un `Sprint`. Aunque no siempre; en ocasiones pueden hacerse despliegues en este entorno antes de finalizar un `Sprint`.
+En estos entornos, suelen desplegarse los `releases`. Generalemente al completar un `Sprint`. Aunque no siempre; en ocasiones pueden hacerse despliegues en este entorno antes de finalizar un `Sprint`.\
 Este entorno cuenta con todas las ventajas del entorno *Develop*, sólo que estará reservado para el equipo de `QA`, también conocido como *Quality Assurance*.\
 En este caso el equipo estará conformado por [Luigui Astohuamán](@luiguimario), [Marco Castilla]( @mact35) y [Pablo E. Pulido](@pulidovpe).
 No se desplegará de forma automática, sinó de forma manual. Se ejecutará en otras instancias reservadas para tal fin. E incluso, usará otra base de datos RDS.\
@@ -127,10 +96,57 @@ No está demás decir que, las pruebas que se efectuarán en este entorno; deben
 <a name="#el-ciclo-completo"></a>
 ## El ciclo completo
 
-A continuación una representación del ciclo completo de desarrollo:
+El ciclo de desarrollo, cuando se encuentra bien organizado, siguiendo *metodologías ágiles* puede representarse así desde el punto de visto de `DevOps`.
+A continuación una representación del ciclo completo de desarrollo en nuestro `Pipeline`:
 
 <div style="text-align:center"><img src="img/pipeline-stages.jpg" /></div>
 
+- Luego de una buena preparación, planificación y levantamiento de información iniciamos con el desarrollo. Lo llamaremos `Source`. Aquí es donde los equipos de desarrollo contruyen el software, hacen sus pruebas locales y finalmente, lo suben al repositorio.
+- Al subirlo, se debe obtener el código de los proyectos (back y front) para clonarlo, instalar dependencias y construirlo. Lo llamaremos `Build`.
+- Seguidamente iniciarán de forma automática los diversos *test* que se encuentren configurados (unitarios, de integración, entre otros). A este paso lo nombramos `Test`. No está demás decir, que si no son superadas las pruebas, se deberá volver al inicio del ciclo.
+- Una vez superadas todas las pruebas, pasaremos al despliegue de los entornos (`Deploy`). El primer despliegue es **Develop**. En él, los equipos de desarrollo efecturaán diversas pruebas y comprobaran como se comporta su aplicación en un entorno parecido al de producción. Si el resultado es satisfactorio, será el momento para crear un *release* y pasarlo al siguiente entorno, el cual sólo puede ser desplegado por *QA*. Caso contrario, deberán volver al inicio del ciclo.
+- Una vez desplegado el entorno de **Staging**, será el equipo de *QA* el encargado de revisar el *release* (el cual, de ser aprobado, se convertirá en *Sprint*). Quedará de parte de *QA*, decidir si preparar un nuevo despliegue, a **Production**, para mostrarlo al cliente, el cual; tendrá la palabra final sobre su aceptación o modificación (volver al inicio del ciclo).
+
+
 #### [Volver al inicio](#inicio)
-<a name="#que-sigue"></a>
-### Que sigue
+<a name="#donde-ver-los-entornos"></a>
+## Donde ver los entornos
+
+Una vez recibida la notificación del encargado de `DevOps` para ver los entornos desplegados del proyecto en desarrollo hay que dirigirse a la plataforma de Gitlab, específicamente al último `merge request` abierto del proyecto designado para tal fin (`monorepo`).
+Desde el enlace señalado se podrá acceder al entorno del proyecto desplegado.
+
+#### [Volver al inicio](#inicio)
+<a name="#donde-ver-el-frontend"></a>
+## Donde ver el *frontend*
+
+Los entornos estarán identificados con los nombres de los proyectos, pero llevarán delante un prefijo; el tipo de entorno seguido por un *slash* o barra diagonal. Cada equipo de desarrollo conoce las características y el propósito para el cual están construyendo su proyecto.\
+En el caso del *frontend*, debido al hecho de ser desplegado en un Bucket S3 (cuya dirección no cambia), siempre se mostrará una URL desde donde acceder. Tanto en la pantalla del `merge request`, como en la del `pipeline` o la de los `entornos`.
+
+![merge request](img/merge-request.jpg "merge request")
+
+Dando click en el número de `pipeline` podremos desplazarnos directamente a la página donde se detallan los `Jobs` ejecutados.
+
+![pipeline paso](img/pipeline-paso.jpg "pipeline paso")
+
+A continuación la totalidad de los `Jobs` ejecutados sin incluir *produccion*.
+
+![pipeline completo](img/pipeline-completo.jpg "pipeline completo")
+
+#### [Volver al inicio](#inicio)
+<a name="#donde-ver-el-backend"></a>
+## Donde ver el *Backend*
+
+Cuando un proyecto sea de `backend` y posea un API que consumir también se desplegará un entorno. 
+En aquellos casos en que dicho entorno no muestre una URL publicada en la pantalla del [`merge request`](#donde-ver-el-entorno), deberemos dirigirnos al `pipeline` y dar click en el `Job` de despliegue de la instancia EC2.
+
+> De momento, no se poseen IPs estáticas para los entornos.
+
+<div style="text-align:center"><img src="img/ver-instancia.jpg" /></div>
+
+Luego que estemos ahí, vamos al final de la página donde deberemos ver tanto el DNS público como la ip.
+
+![ver ip instancia](img/ver-ip-instancia.jpg "ver ip instancia")
+
+#### [Volver al inicio](#inicio)
+<a name="#como-crear-un-release"></a>
+### Como crear un `Release`
