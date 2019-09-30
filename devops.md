@@ -1,4 +1,4 @@
-# Propuesta para un flujo de trabajo ordenado en el desarrollo, pruebas en entornos organizados, revisión de código y posterior publicación de `releases`; siguiendo la cultura `DevOps` en la plataforma Gitlab para miembros de Aventura Tech.
+#  Introducción a la cultura `DevOps` y puesta en práctica para el correcto desarrollo del proyecto.
 ## Version 0.1
 
 Este documento tiene como objetivo proporcionar pautas para la integración, entrega y despliegue contínuo (`CI/CD`) del código desarrollado por los miembros de la organización Aventura Tech.
@@ -60,7 +60,10 @@ Cada caso es distinto, pero si se siguen buenas prácticas y se adopta esta cult
 
 Los entornos de trabajo, preparados en el `pipeline`; se despliegan de forma automática en la plataforma de Amazon Web Services.<br /> 
 Para el caso de proyectos estáticos diseñados específicamente para el *frontend* se utilizarán Buckets S3 con una *URL* fija. Dichos buckets se desplegarán automáticamente al ejecutarse el `pipeline`; y será eliminado su contenido (deteniendo el entorno de forma manual) una vez concluidas las pruebas.<br />
->Si al momento de desplegar un nuevo entorno, todavía se encuentra funcionando una instancia (S3 o EC2), ésta será eliminada y sustituida por la nueva automáticamente.<br />
+
+>Si al momento de desplegar un nuevo entorno, todavía se encuentra funcionando una instancia (Bucket S3 o EC2), ésta será eliminada y sustituida por la nueva automáticamente.<br />
+
+
 En cuanto a los proyectos tipo *backend* cuya configuración es mas exigente; se usará una Instancia EC2 (también en Amazon) generada automáticamente para este único fin. 
 Dicha instancia, tendrá todo el software requerido para que el entorno pueda ejecutarse sin problemas y las pruebas se realicen el tiempo que sea necesario.<br /> 
 Además, la instancia ya estará configurada y tendrá acceso una base de datos RDS en *Postgre* (también alojada en Amazon) a la cual tienen acceso los integrantes del equipo del *Backend* para poder realizar sus pruebas.
