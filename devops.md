@@ -58,24 +58,25 @@ Cada caso es distinto, pero si se siguen buenas prácticas y se adopta esta cult
 <a name="#los-entornos"></a>
 ## Los entornos
 
-Los entornos de trabajo, preparados en el `pipeline`; se despliegan de forma automática (o manual) en la plataforma de Amazon Web Services.\ 
-Para el caso de proyectos estáticos diseñados específicamente para el *frontend* se utilizarán Buckets S3 con una *URL* fija. Dichos buckets se desplegarán automáticamente al ejecutarse el `pipeline`; y será eliminado su contenido (deteniendo el entorno de forma manual) una vez concluidas las pruebas.\
-En cuanto a los proyectos tipo *backend* cuya configuración es mas exigente; se usará una Instancia EC2 (también en Amazon) generada automáticamente para este único fin.\
-Dicha instancia, tendrá todo el software requerido para que el entorno pueda ejecutarse sin problemas y las pruebas se realicen el tiempo que sea necesario.\ 
+Los entornos de trabajo, preparados en el `pipeline`; se despliegan de forma automática en la plataforma de Amazon Web Services.<br /> 
+Para el caso de proyectos estáticos diseñados específicamente para el *frontend* se utilizarán Buckets S3 con una *URL* fija. Dichos buckets se desplegarán automáticamente al ejecutarse el `pipeline`; y será eliminado su contenido (deteniendo el entorno de forma manual) una vez concluidas las pruebas.<br />
+>Si al momento de desplegar un nuevo entorno, todavía se encuentra funcionando una instancia (S3 o EC2), ésta será eliminada y sustituida por la nueva automáticamente.<br />
+En cuanto a los proyectos tipo *backend* cuya configuración es mas exigente; se usará una Instancia EC2 (también en Amazon) generada automáticamente para este único fin. 
+Dicha instancia, tendrá todo el software requerido para que el entorno pueda ejecutarse sin problemas y las pruebas se realicen el tiempo que sea necesario.<br /> 
 Además, la instancia ya estará configurada y tendrá acceso una base de datos RDS en *Postgre* (también alojada en Amazon) a la cual tienen acceso los integrantes del equipo del *Backend* para poder realizar sus pruebas.
 
-<div style="text-align:center"><img src="img/eliminar-entorno1.jpg" /></div>
+<div style="text-align:center"><img src="img/los-entornos.jpg" /></div>
 
 La instancia también podrá ser detenida y eliminada de forma manual desde página del `pipeline`, del `merge-request` y de los entornos por parte de los desarrolladores.
 
-<div style="text-align:center"><img src="img/eliminar-entorno2.jpg" /></div>
+<div style="text-align:center"><img src="img/eliminar-entorno1.jpg" /></div>
 
 #### [Volver al inicio](#inicio)
 <a name="#el-entorno-develop"></a>
 ## El entorno Develop
 
-En los entornos desplegados los equipos de desarrollo pueden comprobar el avance de su trabajo. Pueden comprobar su diseño y desempeño. Y en caso de ser un API, pueden realizar pruebas con una aplicación como *Postman*, *Swagger Inspector*, *Insomnia*, entre otros.\
-Además de los entornos que tengan en sus computadoras personales, contarán con este entorno remoto para poder ver el avance de su trabajo y saber si está listo para generar un `release` y ser desplegado en el siguiente entorno (*Staging*) ó, hacer correcciones en el código.\
+En los entornos desplegados los equipos de desarrollo pueden comprobar el avance de su trabajo. Pueden comprobar su diseño y desempeño. Y en caso de ser un API, pueden realizar pruebas con una aplicación como *Postman*, *Swagger Inspector*, *Insomnia*, entre otros.<br />
+Además de los entornos que tengan en sus computadoras personales, contarán con este entorno remoto para poder ver el avance de su trabajo y saber si está listo para generar un `release` y ser desplegado en el siguiente entorno (*Staging*) ó, hacer correcciones en el código.<br />
 Este entorno, servirá para que todo el equipo de desarrollo pueda hacer pruebas integrales al completar un `Sprint` (Front y Back), de no encontrarse ningun inconveniente el lider del equipo de desarrollo le comunicará al equipo de `QA` que pueden trasladar dicha versión al ambiente de *Staging* para su revisión posterior.
 
 <div style="text-align:center"><img src="img/entorno-develop.jpg" /></div>
@@ -84,10 +85,10 @@ Este entorno, servirá para que todo el equipo de desarrollo pueda hacer pruebas
 <a name="#el-entorno-staging"></a>
 ## El entorno Staging
 
-En estos entornos, suelen desplegarse los `releases`. Generalemente al completar un `Sprint`. Aunque no siempre; en ocasiones pueden hacerse despliegues en este entorno antes de finalizar un `Sprint`.\
-Este entorno cuenta con todas las ventajas del entorno *Develop*, sólo que estará reservado para el equipo de `QA`, también conocido como *Quality Assurance*.\
+En estos entornos, suelen desplegarse los `releases`. Generalemente al completar un `Sprint`. Aunque no siempre; en ocasiones pueden hacerse despliegues en este entorno antes de finalizar un `Sprint`.<br />
+Este entorno cuenta con todas las ventajas del entorno *Develop*, sólo que estará reservado para el equipo de `QA`, también conocido como *Quality Assurance*.<br />
 En este caso el equipo estará conformado por [Luigui Astohuamán](@luiguimario), [Marco Castilla]( @mact35) y [Pablo E. Pulido](@pulidovpe).
-No se desplegará de forma automática, sinó de forma manual. Se ejecutará en otras instancias reservadas para tal fin. E incluso, usará otra base de datos RDS.\
+No se desplegará de forma automática, sinó de forma manual. Se ejecutará en otras instancias reservadas para tal fin. E incluso, usará otra base de datos RDS.<br />
 No está demás decir que, las pruebas que se efectuarán en este entorno; deben ser superadas y aprobadas por el equipo de `QA` para poder hacer despliegues en *producción*.
 
 <div style="text-align:center"><img src="img/entorno-staging.jpg" /></div>
@@ -103,8 +104,8 @@ A continuación una representación del ciclo completo de desarrollo en nuestro 
 
 - Luego de una buena preparación, planificación y levantamiento de información iniciamos con el desarrollo. Lo llamaremos `Source`. Aquí es donde los equipos de desarrollo contruyen el software, hacen sus pruebas locales y finalmente, lo suben al repositorio.
 - Al subirlo, se debe obtener el código de los proyectos (back y front) para clonarlo, instalar dependencias y construirlo. Lo llamaremos `Build`.
-- Seguidamente iniciarán de forma automática los diversos *test* que se encuentren configurados (unitarios, de integración, entre otros). A este paso lo nombramos `Test`. No está demás decir, que si no son superadas las pruebas, se deberá volver al inicio del ciclo.
-- Una vez superadas todas las pruebas, pasaremos al despliegue de los entornos (`Deploy`). El primer despliegue es **Develop**. En él, los equipos de desarrollo efecturaán diversas pruebas y comprobaran como se comporta su aplicación en un entorno parecido al de producción. Si el resultado es satisfactorio, será el momento para crear un *release* y pasarlo al siguiente entorno, el cual sólo puede ser desplegado por *QA*. Caso contrario, deberán volver al inicio del ciclo.
+- Seguidamente iniciarán de forma automática los diversos *test* que se encuentren configurados (unitarios, de integración, entre otros). A este paso lo nombramos `Test`. No está demás decir, que si no son superadas las pruebas, todo el proceso se detendrá y se deberá volver al inicio del ciclo.
+- Una vez superadas todas las pruebas, pasaremos al despliegue de los entornos (`Deploy`). En él, se crearán nuevas instancia para trabajar (tanto S3 como EC2) y de existir aún las anteriores, éstas se eliminarán. El primer despliegue es **Develop**. En él, los equipos de desarrollo efecturán diversas pruebas y comprobarán como se comporta su aplicación en un entorno parecido al de producción. Si el resultado es satisfactorio, será el momento para crear un *release* y pasarlo al siguiente entorno, el cual sólo puede ser desplegado por *QA*. Caso contrario, deberán volver al inicio del ciclo.
 - Una vez desplegado el entorno de **Staging**, será el equipo de *QA* el encargado de revisar el *release* (el cual, de ser aprobado, se convertirá en *Sprint*). Quedará de parte de *QA*, decidir si preparar un nuevo despliegue, a **Production**, para mostrarlo al cliente, el cual; tendrá la palabra final sobre su aceptación o modificación (volver al inicio del ciclo).
 
 
@@ -119,7 +120,7 @@ Desde el enlace señalado se podrá acceder al entorno del proyecto desplegado.
 <a name="#donde-ver-el-frontend"></a>
 ## Donde ver el *frontend*
 
-Los entornos estarán identificados con los nombres de los proyectos, pero llevarán delante un prefijo; el tipo de entorno seguido por un *slash* o barra diagonal. Cada equipo de desarrollo conoce las características y el propósito para el cual están construyendo su proyecto.\
+Los entornos estarán identificados con los nombres de los proyectos, pero llevarán delante un prefijo; el tipo de entorno seguido por un *slash* o barra diagonal. Cada equipo de desarrollo conoce las características y el propósito para el cual están construyendo su proyecto.<br />
 En el caso del *frontend*, debido al hecho de ser desplegado en un Bucket S3 (cuya dirección no cambia), siempre se mostrará una URL desde donde acceder. Tanto en la pantalla del `merge request`, como en la del `pipeline` o la de los `entornos`.
 
 ![merge request](img/merge-request.jpg "merge request")
@@ -128,7 +129,7 @@ Dando click en el número de `pipeline` podremos desplazarnos directamente a la 
 
 ![pipeline paso](img/pipeline-paso.jpg "pipeline paso")
 
-A continuación la totalidad de los `Jobs` ejecutados sin incluir *produccion*.
+A continuación la totalidad de los `Jobs` ejecutados sin incluir **production**.
 
 ![pipeline completo](img/pipeline-completo.jpg "pipeline completo")
 
