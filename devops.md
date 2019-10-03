@@ -133,8 +133,9 @@ A continuación una representación del ciclo completo de desarrollo en nuestro 
 - Una vez superadas todas las pruebas, pasaremos al despliegue de los entornos (`Deploy`). En él, se crearán nuevas instancias para trabajar (tanto S3 como EC2) y de existir aún las anteriores, éstas se eliminarán.
    - El primer despliegue es **Develop**. En él, los equipos de desarrollo efecturán diversas pruebas y comprobarán como se comporta su aplicación en un entorno parecido al de **Production**. Si el resultado es satisfactorio, será el momento para crear un *release* y pasarlo al siguiente entorno, el cual sólo puede ser desplegado por *QA*. Caso contrario, deberán volver al inicio del ciclo.
    - Los líderes deberán crear primero un **Issue** y luego un **Merge request** de la rama *release*.
+   - Una vez descargado el **Merge request** de la rama *release*, deben hacer un git fetch y luego un merge trayéndose los cambios de *develop* a la rama *release*.
    - Cabe mencionar que, se debe dejar constancia de cada paso que se de, en el sistema de comentarios del **Merge request**.
-   - Para este momento, el `pipeline` del monorepo se modificará para que la rama *release* de los proyectos sean desplegadas en **Staging**.
+   - Para este momento, el `pipeline` del monorepo tomará el código de la rama *release* de los proyectos para que sean desplegados en **Staging**.
    - En el caso de que QA encuentre algún error en el *Sprint* notificará a *Desarrollo* a través de los comentarios del **Merge request** para que solucionen el error mediante el uso de `Hotfixes` en la rama *release*.
    - Después que los líderes de *Desarrollo* resuelvan el **Issue** de la rama *release* con un **Merge request**, deberán ejecutar un **Cherry-pick** a la rama *develop* del commit que se haya usado para resolver el error detectado por QA.
    - Esto se puede hacer desde la misma pantalla del **Merge request**. Hay un boton justo al lado para tal fin.
