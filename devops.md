@@ -17,6 +17,7 @@ Este documento tiene como objetivo proporcionar pautas para la integración, ent
 | [El entorno Develop](#el-entorno-develop) |
 | [El entorno Staging](#el-entorno-staging) |
 | [El ciclo completo](#el-ciclo-completo) |
+| [Los Cherry Pick](#los-cherry-pick) |
 | [Donde ver los entornos](#donde-ver-los-entornos) |
 | [Donde ver el Frontend](#donde-ver-el-frontend) |
 | [Donde ver el Backend](#donde-ver-el-backend) |
@@ -123,17 +124,40 @@ A continuación una representación del ciclo completo de desarrollo en nuestro 
 <br /><br />
 
 - Luego de una buena preparación, planificación y levantamiento de información iniciamos con el desarrollo. Lo llamaremos `Source`. Aquí es donde los equipos de desarrollo contruyen el software, hacen sus pruebas locales y finalmente, lo suben al repositorio.
-   - También es aquí es donde inicia el proyecto **monorepo**. Se genera un **issue** y posteriormente un **merge request** donde se desplegarán los proyectos en desarrollo.
+   - También es aquí es donde inicia el proyecto **monorepo**. Se genera un **issue** y posteriormente un **Merge request** donde se desplegarán los proyectos en desarrollo.
    - Cualquier uso de **Variables de Entorno** que se requiera para la correcta ejecución del proyecto, deberá ser notificada al encargado de *DevOps* para que se incluyan en la configuración del `pipeline`.
 - Al subirlo, se debe obtener el código de los proyectos (back y front) para clonarlo, instalar dependencias y construirlo. Lo llamaremos `Build`.
    - De ocurrir algún problema durante la construcción de los *artefactos* y se determine que se debe a un error en el código de los proyectos; se les notificará a los líderes de equipo mediante el sistema de comentarios del **merge request** generado en la plataforma de **Gitlab**.
 - Seguidamente iniciarán de forma automática los diversos *test* que se encuentren configurados (unitarios, de integración, entre otros). A este paso lo nombramos `Test`. No está demás decir, que si no son superadas las pruebas, todo el proceso se detendrá y se deberá volver al inicio del ciclo.
-   - También se utilizará la plataforma de comentarios en el **merge request** para notificar sobre cualquier error ocurrido durante los *Test* realizados durante la ejecucion de los *Jobs*.
+   - También se utilizará la plataforma de comentarios en el **Merge request** para notificar sobre cualquier error ocurrido durante los *Test* realizados durante la ejecucion de los *Jobs*.
 - Una vez superadas todas las pruebas, pasaremos al despliegue de los entornos (`Deploy`). En él, se crearán nuevas instancias para trabajar (tanto S3 como EC2) y de existir aún las anteriores, éstas se eliminarán.
    - El primer despliegue es **Develop**. En él, los equipos de desarrollo efecturán diversas pruebas y comprobarán como se comporta su aplicación en un entorno parecido al de **Production**. Si el resultado es satisfactorio, será el momento para crear un *release* y pasarlo al siguiente entorno, el cual sólo puede ser desplegado por *QA*. Caso contrario, deberán volver al inicio del ciclo.
-   - Cabe mencionar que, se debe dejar constancia de los resultados del despliegue en el sistema de comentarios del **merge request**.
-- Una vez desplegado el entorno de **Staging**, será el equipo de *QA* el encargado de revisar el *release* (el cual, de ser aprobado, se convertirá en *Sprint*). 
+   - Los líderes deberán crear primero un **Issue** y luego un **Merge request**, el cual fusionarán en la rama *release*.
+   - Cabe mencionar que, se debe dejar constancia de cada paso qu se de en el sistema de comentarios del **Merge request**.
+   - Para este momento, el `pipeline` del monorepo se modificará para que la rama *release* de los proyectos sean desplegadas en **Staging**.
+   - En el caso de que QA encuentre algún error en el *Sprint* notificará a *Desarrollo* a través de los comentarios del **Merge request** para que solucionen el error mediante el uso de `Hotfixes` en la rama *release*.
+   - Después que los líderes de *Desarrollo* resuelvan el **Issue** de la rama *release* con un **Merge request**, deberán ejecutar un **Cherry-pick** a la rama *develop* del commit que se haya usado para resolver el error detectado por QA.
+   - Esto se puede hacer desde la misma pantalla del **Merge request**. Hay un boton justo al lado para tal fin.
+   - QA lo revisa, si se aprueba, se dan indicaciones para hacer **Merge request** a *master* en los respectivos proyectos.
    - Quedará de parte de *QA*, decidir si preparar un nuevo despliegue, a **Production**, para mostrarlo al cliente, el cual; tendrá la palabra final sobre su aceptación o modificación (volver al inicio del ciclo).
+
+#### [Volver al inicio](#inicio)
+<a name="#los-cherry-pick"></a>
+## Los Cherry-pick
+
+Para efectuar los **Cherry-pick** que se mencionan durante el ciclo completo, debemos dirigirnos a la pantalla del **Merge request** que se haya realizado en la rama *Release*.
+
+<br />
+
+![merge request](img/cherry-pick-1-merge-request.jpg "merge request")
+
+<br />
+
+Una vez presionado el botón del **Cherry-pick** aparecerá un modal solicitando se seleccione la rama en la que se implementará. La cual deberá ser, *Develop*.
+
+<br />
+
+![merge request](img/cherry-pick-2-merge-request.jpg "merge request")
 
 
 #### [Volver al inicio](#inicio)
