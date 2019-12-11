@@ -219,3 +219,14 @@ Luego que estemos ahí, vamos al final de la página donde deberemos ver tanto e
 #### [Volver al inicio](#inicio)
 <a name="#como-crear-un-release"></a>
 ### Como crear un `Release`
+
+1 - Ir al repositorio.
+2 - En el menú elegir Repositorio > Etiquetas
+3 - Agregar una etiqueta para la versión de la aplicación. Por ejemplo, v1.2.
+4 - Agregar un mensaje (título) acerca del `release`. Por ejemplo, Release 1.2.
+5 - Agregar una nota para describir los detalles del `release`. (Es obligatorio. Agregar una nota a la etiqueta, es lo que lo convierte en un `release`.)
+6 - Hacer Click en Crear Etiqueta.
+
+<br />
+
+<div style="text-align:center"><img src="img/release.png" /></div>
