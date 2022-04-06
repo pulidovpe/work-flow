@@ -1,4 +1,4 @@
-# Propuesta de flujo de trabajo en Gitlab para miembros de Aventura Tech.
+# Propuesta de flujo de trabajo en Gitlab para miembros de algún proyecto.
 ## Version 0.1
 
 Este documento tiene como objetivo proporcionar pautas para la integración de código limpio y ordenado; escrito por los miembros de la organización Aventura Tech.
